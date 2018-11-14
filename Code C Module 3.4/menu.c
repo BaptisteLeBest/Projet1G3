@@ -22,6 +22,7 @@ int menu()
 		printf("(2) Afficher les donnees triees\n");
 		printf("(3) Rechercher les donnees pour un temps particulier\n");
 		printf("(4) Moyenne pouls sur intervalle de temps\n");
+		printf("(5) Pouls max et pouls min\n");
 		printf("(autre) Quitter\n");
 
 		scanf("%d", &choix);
@@ -156,6 +157,29 @@ int menu()
 			moyennePouls = (float)totPouls / (float)size_list_temps;
 			printf("Pouls moyen: %f\n", moyennePouls);
 
+			break;
+		}
+		case 5:
+		{
+			data *list[100];
+			data *listeData = NULL;
+			listeData = chargeData();
+			listeData = listeData->nextData;
+			data *poulsMax = listeData;
+			data *poulsMin = listeData;
+			while (listeData->nextData != NULL)
+			{
+				if (poulsMax->b < listeData->b) {
+					poulsMax = listeData;
+				}
+				if (poulsMax->b > listeData->b) {
+					poulsMin = listeData;
+				}
+				listeData = listeData->nextData;
+			}
+			printf("Le pouls min est de %d (temps = %d)\n", poulsMin->b, poulsMin->a);
+			printf("Le pouls max est de %d (temps = %d)\n", poulsMax->b, poulsMax->a);
+			
 			break;
 		}
 		default:
