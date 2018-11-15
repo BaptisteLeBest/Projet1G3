@@ -2,6 +2,6 @@
 #define ACTIONS_H
 
 void swap(data **A, data **B);
-void tri_a_bulles(data *d[100], int n, int type_tri);
+void tri_a_bulles(data *d[], int n, int type_tri);
 
 #endif

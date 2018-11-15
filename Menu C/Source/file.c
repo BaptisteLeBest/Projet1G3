@@ -1,5 +1,5 @@
 /*
-Fichier projet MIQUEL Baptiste Groupe 3
+Fichier projet Groupe 3
 */
 
 #define _CRT_SECURE_NO_DEPRECATE
