@@ -1,1 +1,1 @@
-clignote les LEDS au rythme du coeur
+#define choix 7

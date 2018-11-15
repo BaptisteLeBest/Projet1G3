@@ -1,6 +1,7 @@
 #include "generationCode.h"
 #include <stdio.h>
 
+int choixLED = 0;
 int generationCode(int pulsation)
 {
     FILE *f;
@@ -13,39 +14,24 @@ int generationCode(int pulsation)
     }
     else
     {
-        switch(pulsation)
+
+//Partie qui fait fonctionner pour le cas 5 qui demande de choisir entre un interval et pas le depasser
+        if (pulsation == 5)
         {
-
-            case 1 :
+            do
             {
-                printf("choix\n");
-                fprintf(f, "clignote les LEDS au rythme du coeur");
-                break;
+                printf("Veuillez choisir la LED  que vous voulez entre 1 et 10\n");
+                scanf("%d" , &choixLED);
             }
-
-            case 2 :
-                {
-                    fprintf(f, "clignotes les LEDS sous forme de chenille");
-                    break;
-                }
-
-            case 3 :
-                {
-                    fprintf(f, "clignotes les LEDS 1 sur 2");
-                    break;
-                }
-
-            case 4 :
-                {
-                    fprintf(f, "clignotes les LEDS 1 sur 3");
-                    break;
-                }
-            default :
-                {
-                }
+            while(choixLED < 1 || choixLED > 10);
+            fprintf(f, "#define choixLED %d\n", choixLED);
         }
+
+//Ca crée une varible choix qui depend de la valeur pulsation entrée
+        fprintf(f, "#define choix %d", pulsation);
         fclose(f);
     }
+
 return 0;
 }
 
