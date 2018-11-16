@@ -129,6 +129,7 @@ float moyennePouls(data *d, int tempsDebut, int tempsFin)
 	{
 		totPouls += t[j]->b;
 	}
+	printf("%d\n", size_list_temps);
 	return (float)totPouls / (float)size_list_temps;
 }
 

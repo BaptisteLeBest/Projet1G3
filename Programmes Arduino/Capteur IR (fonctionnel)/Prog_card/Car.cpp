@@ -24,9 +24,9 @@ void Card(){
         if(Ledbat > 30 && Ledbat < 120)
         {
           time = millis();
-          Serial.println(time);          
+          Serial.print(time);          
           Serial.print(";");
-          Serial.print(Ledbat);
+          Serial.println(Ledbat);
          
           
           //delay((1000/Ledbat)*60);

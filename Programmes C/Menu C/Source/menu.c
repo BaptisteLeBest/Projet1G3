@@ -76,8 +76,6 @@ int menu_led()
 
 int menu_csv()
 {
-	int type_tri = 0;
-	int choix_type_tri = 0;
 	int choix = 1;
 	while ((choix > 0) && (choix < 6))
 	{
@@ -111,6 +109,9 @@ int menu_csv()
 		}
 		case 2:
 		{
+			int type_tri = 0;
+			int choix_type_tri = 0;
+
 			data *listeData = NULL;
 			listeData = chargeData();
 
@@ -148,6 +149,7 @@ int menu_csv()
 					type_tri = 3; // Tri par pouls decroissant
 				}
 			}
+			printf("Tri en cours\n");
 			tri_a_bulles(&tableau_data, tailleDonnees(listeData), type_tri);
 			printf("Tri reussi\n");
 

@@ -8,7 +8,7 @@ Serial udSerial;
 String[] m1;
 
 void setup() {
-  udSerial = new Serial(this, Serial.list()[1], 9600);
+  udSerial = new Serial(this, Serial.list()[4], 9600); // List[4] = COM8
   output = createWriter ("data.csv");
   frameRate(1);
 }
