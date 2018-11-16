@@ -199,7 +199,7 @@ int menu_csv()
 
 			printf("Le pouls min est de %d (temps = %d)\n", tableau_data[0]->b, tableau_data[0]->a);
 			printf("Le pouls max est de %d (temps = %d)\n", tableau_data[1]->b, tableau_data[1]->a);
-			
+
 			break;
 		}
 		default:
