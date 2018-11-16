@@ -1,26 +1,43 @@
 #include "coeur.h" 
 #include "Arduino.h" 
 
-int t,v,m; 
+int ValeurPrecedentee = 0;
+int TempsPrecedente = 0;
+int Ledbatt,m; 
+
 void one_led()
 {    
-      // 10 répétitions de l'allumage de toutes les leds 
-      while (v<=10)
-      {
-         for (t=2; t<=11; t++) 
-        {
-          //Allulage des leds une par une en éteignant la precédente. 
-          m = random(750,770);
-          digitalWrite(t,HIGH); 
-          delay(100);
-          digitalWrite(t,LOW);
-          delay(m);
-          
-        }
-        v = v+1;  
-      }
+      while(1) 
+   {
+      int ValeurActuellee, ValeurSeuile;
+      int TempsDetectione;
+
+       ValeurActuellee = analogRead(0); // lecture de la sortie A0
+       ValeurSeuile = 300; // // Valeur Seuil d'analog0 avant enregistrement de battements 
+
        
-     loop(); 
-     
-    
+        if (ValeurActuellee > ValeurSeuile) {  
+          if (ValeurPrecedentee <= ValeurSeuile) {  
+            TempsDetectione = millis(); // détection du temps depuis le démarrage du programme 
+            if (TempsDetectione > (TempsPrecedente + 200)){  
+              Ledbatt = (1000.0 * 60.0) / (TempsDetectione - TempsPrecedente); // Calcul des battements de coeurs en battements par minutes 
+              if(Ledbatt > 30 && Ledbatt < 120) // intervalle de battements défini à cause de l'imprecision de la led infrarouge 
+              {
+                Serial.println(Ledbatt); 
+                //Allumage des leds 1 sur 2 
+                for (m =2; m<=11 ; m++){
+                  digitalWrite(m,HIGH); 
+                  delay(100); 
+                  digitalWrite(m,LOW);
+                }
+                
+                //delay((1000/Ledbatt)*60);
+                TempsPrecedente = TempsDetectione;
+              }
+      }
+    }
+  }
+  ValeurPrecedentee = ValeurActuellee;
+   }
+  
 }

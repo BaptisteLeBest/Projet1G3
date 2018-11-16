@@ -17,7 +17,7 @@ void setup() {
 void loop() 
 {
   Serial.println(choix);
-
+  // Choix d'allumage des leds 
    if (choix==1)
       {
        Serial.println("Vous avez choisi de tout allumer");

@@ -6,6 +6,7 @@
  
   
 void Cardio__print(int led) {    
+  //répétition de la fonction vraibat();
     while(1) {    
         vraibat(led);
     }       
