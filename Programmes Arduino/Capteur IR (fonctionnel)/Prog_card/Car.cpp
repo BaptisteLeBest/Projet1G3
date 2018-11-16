@@ -4,32 +4,36 @@
 unsigned long time; 
 int valeurPrecedente = 0;
 long tempsPrecedent = 0;
+int Ledbat,calc;
 
-void Card() {
+void Card(){
   
 
   int valeurActuelle, valeurSeuil;
- long tempsDetection;
+  long tempsDetection;
 
   valeurActuelle = analogRead(0);
-  //Serial.println(valeurActuelle);
-  valeurSeuil = 380;
+  valeurSeuil = 300;
 
   
- if (valeurActuelle > valeurSeuil) {  // on est dans la zone max
-    if (valeurPrecedente <= valeurSeuil) {  // est-ce qu'on vient d'y entrer?
+  if (valeurActuelle > valeurSeuil) {  
+    if (valeurPrecedente <= valeurSeuil) {  
       tempsDetection = millis();
-      if (tempsDetection > (tempsPrecedent + 200)){  // ce n'est pas seulement du bruit?
-        Serial.print( (1000.0 * 60.0) / (tempsDetection - tempsPrecedent),0);
-        tempsPrecedent = tempsDetection;
-        Serial.print(";");
-        time = millis();
-       Serial.println(time);
+      if (tempsDetection > (tempsPrecedent + 200)){  
+        Ledbat = (1000.0 * 60.0) / (tempsDetection - tempsPrecedent);
+        if(Ledbat > 30 && Ledbat < 120)
+        {
+          time = millis();
+          Serial.println(time);          
+          Serial.print(";");
+          Serial.print(Ledbat);
+         
+          
+          //delay((1000/Ledbat)*60);
+          tempsPrecedent = tempsDetection;
+        }
       }
     }
   }
-  
   valeurPrecedente = valeurActuelle;
-  
-
 }
