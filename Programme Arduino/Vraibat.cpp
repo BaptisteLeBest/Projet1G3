@@ -1,28 +1,39 @@
 #include "coeur.h"
 #include "Arduino.h"
+
+#ifndef VRAIBAT
+#define VRAIBAT
   
 int valeurPrecedente = 0;
 int tempsPrecedent = 0;
 int Ledbat,calc;
 
-void vraibat() {
+void vraibat(int led) {
   int valeurActuelle, valeurSeuil;
   int tempsDetection;
 
   valeurActuelle = analogRead(0);
-  valeurSeuil = 390;
-  
+  valeurSeuil = 300;
+
+  //Serial.println(valeurActuelle);
   if (valeurActuelle > valeurSeuil) {  
     if (valeurPrecedente <= valeurSeuil) {  
       tempsDetection = millis();
       if (tempsDetection > (tempsPrecedent + 200)){  
         Ledbat = (1000.0 * 60.0) / (tempsDetection - tempsPrecedent);
-        if(Ledbat > 40 && Ledbat < 120)
+        if(Ledbat > 30 && Ledbat < 120)
         {
           Serial.println(Ledbat);
-          ledup(); 
-          delay(50);
-          ledlow(); 
+          if(led > 0)
+          {
+            digitalWrite(led,HIGH);
+            delay(50);
+            digitalWrite(led,LOW);
+          } else {
+            ledup(); 
+             delay(50);
+             ledlow(); 
+          }
           //delay((1000/Ledbat)*60);
           tempsPrecedent = tempsDetection;
         }
@@ -31,3 +42,5 @@ void vraibat() {
   }
   valeurPrecedente = valeurActuelle;
 }
+
+#endif

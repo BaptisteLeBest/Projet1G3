@@ -2,11 +2,11 @@
 #include "Arduino.h" 
 
 
- double x,card;
+
  
   
-void Cardio__print() {    
+void Cardio__print(int led) {    
     while(1) {    
-        vraibat();
+        vraibat(led);
     }       
 }
