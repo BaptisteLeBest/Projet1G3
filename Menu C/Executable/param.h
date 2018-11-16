@@ -1,1 +1,1 @@
-#define choix 9
+#define choix 7

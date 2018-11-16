@@ -1,7 +1,5 @@
 #define _CRT_SECURE_NO_DEPRECATE
 
-#define SIZE_LIST 10
-
 #include "donnees.h"
 #include "menu.h"
 #include <stdio.h>
@@ -66,6 +64,18 @@ data* chargeData()
 		printf("Echec fermeture du fichier\n");
 	}
 	return listeData;
+}
+
+int tailleDonnees(data *d)
+{
+	int taille = 0;
+	d = d->nextData;
+	while (d->nextData != NULL)
+	{
+		taille++;
+		d = d->nextData;
+	}
+	return taille;
 }
 
 void afficherToutData(data *d[])

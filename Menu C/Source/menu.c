@@ -1,7 +1,5 @@
 #define _CRT_SECURE_NO_DEPRECATE
 
-#define SIZE_LIST 499
-
 #include "menu.h"
 #include "donnees.h"
 #include "actions.h"
@@ -150,7 +148,7 @@ int menu_csv()
 					type_tri = 3; // Tri par pouls decroissant
 				}
 			}
-			tri_a_bulles(&tableau_data, SIZE_LIST, type_tri);
+			tri_a_bulles(&tableau_data, tailleDonnees(listeData), type_tri);
 			printf("Tri reussi\n");
 
 			afficherToutData(tableau_data);

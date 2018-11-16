@@ -15,5 +15,6 @@ void afficherToutData(data *d[]);
 data *rechercherPouls(data *d, data *t[], int temps);
 float moyennePouls(data *d, int tempsDebut, int tempsFin);
 data *poulsMinMax(data *d, data *t[]);
+int tailleDonnees(data *d);
 
 #endif
