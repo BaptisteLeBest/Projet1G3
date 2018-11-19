@@ -26,12 +26,12 @@ void loop()
    else if (choix>=5)
      {
       Serial.println("Vous avez choisi d'allumer une led de votre choix");
-         
+      one_led(choixLED);
      }
    else if (choix==2) 
      {
       Serial.println("Vous avez choisi d'allumer les leds une par une ");
-      one_led();
+      one_led(0);
      }
    else if (choix==3) 
     {

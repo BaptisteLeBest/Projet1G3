@@ -3,7 +3,7 @@
 
 #define test 1
 
-void one_led();  
+void one_led(int led);  
 void un_deux(); 
 void un_trois(); 
 void ledup();
